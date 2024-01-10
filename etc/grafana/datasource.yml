@@ -26,22 +26,22 @@ datasources:
       httpMethod: POST
     readOnly: false
     editable: true
-  - uid: tempo
-    orgId: 1
-    name: Tempo
-    type: tempo
-    typeName: Tempo
-    access: proxy
-    url: http://tempo
-    password: ''
-    user: ''
-    database: ''
-    basicAuth: false
-    isDefault: false
-    jsonData:
-      nodeGraph:
-        enabled: true
-      search:
-        hide: false
-    readOnly: false
-    editable: true
+  # - uid: tempo
+  #   orgId: 1
+  #   name: Tempo
+  #   type: tempo
+  #   typeName: Tempo
+  #   access: proxy
+  #   url: http://tempo
+  #   password: ''
+  #   user: ''
+  #   database: ''
+  #   basicAuth: false
+  #   isDefault: false
+  #   jsonData:
+  #     nodeGraph:
+  #       enabled: true
+  #     search:
+  #       hide: false
+  #   readOnly: false
+  #   editable: true
