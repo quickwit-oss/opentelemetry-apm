@@ -25,7 +25,164 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 14,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "options": {
+        "dedupStrategy": "none",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [],
+          "datasource": {
+            "type": "quickwit-quickwit-datasource",
+            "uid": "quickwit"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "settings": {
+                "limit": "100",
+                "sortDirection": "desc"
+              },
+              "type": "logs"
+            }
+          ],
+          "query": "service_name:$app",
+          "refId": "A",
+          "timeField": ""
+        }
+      ],
+      "title": "Spans",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "quickwit-quickwit-datasource",
+        "uid": "quickwit"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 10,
+        "x": 14,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "span_start_timestamp_nanos",
+              "id": "2",
+              "settings": {
+                "interval": "1m"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "quickwit-quickwit-datasource",
+            "uid": "quickwit"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "",
+          "refId": "A",
+          "timeField": ""
+        }
+      ],
+      "title": "Spans volume",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "quickwit-quickwit-datasource",
+        "uid": "quickwit"
       },
       "description": "",
       "fieldConfig": {
@@ -52,7 +209,7 @@
         "h": 4,
         "w": 6,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 2,
       "options": {
@@ -67,10 +224,11 @@
           "fields": "/^Count$/",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -89,7 +247,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -122,7 +280,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "fieldConfig": {
         "defaults": {
@@ -144,7 +302,7 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 0
+        "y": 8
       },
       "id": 3,
       "options": {
@@ -159,10 +317,11 @@
           "fields": "",
           "values": false
         },
+        "showPercentChange": false,
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -192,7 +351,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -200,19 +359,18 @@
               "type": "count"
             }
           ],
-          "query": "",
+          "query": "span_kind:2 AND service_name:$app",
           "refId": "5XX",
           "timeField": "span_start_timestamp_nanos"
         }
       ],
       "title": "Requests Count",
-      "transformations": [],
       "type": "stat"
     },
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "request amount distribution",
       "fieldConfig": {
@@ -236,7 +394,7 @@
         "h": 8,
         "w": 6,
         "x": 12,
-        "y": 0
+        "y": 8
       },
       "id": 4,
       "options": {
@@ -282,7 +440,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -301,7 +459,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "cumulative latency distribution",
       "fieldConfig": {
@@ -325,7 +483,7 @@
         "h": 8,
         "w": 6,
         "x": 18,
-        "y": 0
+        "y": 8
       },
       "id": 7,
       "options": {
@@ -371,7 +529,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -391,7 +549,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "overall request rate per minute over last 3 minutes",
       "fieldConfig": {
@@ -418,7 +576,7 @@
         "h": 4,
         "w": 3,
         "x": 0,
-        "y": 4
+        "y": 12
       },
       "id": 8,
       "options": {
@@ -436,7 +594,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -452,7 +610,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -471,7 +629,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "percentage of HTTP status 5xx in all requests",
       "fieldConfig": {
@@ -501,7 +659,7 @@
         "h": 4,
         "w": 3,
         "x": 3,
-        "y": 4
+        "y": 12
       },
       "id": 9,
       "options": {
@@ -519,7 +677,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -546,7 +704,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -603,7 +761,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "request rate per minute over last 3 minutes",
       "fieldConfig": {
@@ -668,7 +826,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 8
+        "y": 16
       },
       "id": 1,
       "options": {
@@ -710,7 +868,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -729,7 +887,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "PR95 latency over last 3 minutes",
       "fieldConfig": {
@@ -791,7 +949,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 8
+        "y": 16
       },
       "id": 5,
       "options": {
@@ -832,7 +990,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -857,7 +1015,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "by route and http status code",
       "fieldConfig": {
@@ -887,7 +1045,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 8
+        "y": 16
       },
       "id": 6,
       "options": {
@@ -908,7 +1066,7 @@
         "sizing": "manual",
         "valueMode": "color"
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -927,7 +1085,7 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
@@ -947,7 +1105,7 @@
     {
       "datasource": {
         "type": "quickwit-quickwit-datasource",
-        "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+        "uid": "quickwit"
       },
       "description": "Details of each API",
       "fieldConfig": {
@@ -967,8 +1125,211 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Request Rate Trend"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "sparkline"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "palette-classic"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Request Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "reqpm"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Trend #PR95"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Error Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "reqpm"
+              },
+              {
+                "id": "noValue",
+                "value": "0 req/min"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "span_attributes.http.route"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 205
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 10,
+        "x": 0,
+        "y": 24
+      },
+      "id": 10,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "span_attributes.http.route",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "span_start_timestamp_nanos",
+              "id": "2",
+              "settings": {
+                "interval": "1m",
+                "min_doc_count": "0",
+                "timeZone": "utc"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "quickwit-quickwit-datasource",
+            "uid": "quickwit"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "service_name:$app AND span_kind:2",
+          "refId": "Request Rate",
+          "timeField": ""
+        }
+      ],
+      "title": "Details",
+      "transformations": [
+        {
+          "id": "timeSeriesTable",
+          "options": {
+            "Error Rate": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "Error Rate Trend": {
+              "timeField": "Time"
+            },
+            "PR95": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "PR95 Trend": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "Request Rate": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "Request Rate Trend": {
+              "stat": "lastNotNull",
+              "timeField": "Time"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "quickwit-quickwit-datasource",
+        "uid": "quickwit"
+      },
+      "description": "Details of each API",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1042,11 +1403,11 @@
       },
       "gridPos": {
         "h": 10,
-        "w": 24,
-        "x": 0,
-        "y": 16
+        "w": 7,
+        "x": 10,
+        "y": 24
       },
-      "id": 10,
+      "id": 14,
       "options": {
         "cellHeight": "sm",
         "footer": {
@@ -1062,7 +1423,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.2.3",
+      "pluginVersion": "10.4.3",
       "targets": [
         {
           "alias": "",
@@ -1071,47 +1432,7 @@
               "field": "span_attributes.http.route",
               "id": "3",
               "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "span_start_timestamp_nanos",
-              "id": "2",
-              "settings": {
-                "interval": "1m",
                 "min_doc_count": "0",
-                "timeZone": "utc",
-                "trimEdges": "0"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "service_name:$app AND span_kind:2",
-          "refId": "Request Rate",
-          "timeField": "span_start_timestamp_nanos"
-        },
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "span_attributes.http.route",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
                 "order": "desc",
                 "orderBy": "_term",
                 "size": "10"
@@ -1129,55 +1450,23 @@
           ],
           "datasource": {
             "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
+            "uid": "quickwit"
           },
           "metrics": [
             {
               "field": "span_duration_millis",
               "id": "1",
-              "type": "max"
+              "settings": {
+                "percents": [
+                  "95"
+                ]
+              },
+              "type": "percentiles"
             }
           ],
           "query": "service_name:$app AND span_kind:2",
-          "refId": "PR95",
-          "timeField": "span_start_timestamp_nanos"
-        },
-        {
-          "alias": "",
-          "bucketAggs": [
-            {
-              "field": "span_attributes.http.route",
-              "id": "3",
-              "settings": {
-                "min_doc_count": "1",
-                "order": "desc",
-                "orderBy": "_term",
-                "size": "10"
-              },
-              "type": "terms"
-            },
-            {
-              "field": "span_start_timestamp_nanos",
-              "id": "2",
-              "settings": {
-                "interval": "1m"
-              },
-              "type": "date_histogram"
-            }
-          ],
-          "datasource": {
-            "type": "quickwit-quickwit-datasource",
-            "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
-          },
-          "metrics": [
-            {
-              "id": "1",
-              "type": "count"
-            }
-          ],
-          "query": "service_name:$app AND span_kind:2 AND span_attributes.http.status_code:500",
-          "refId": "Error Rate",
-          "timeField": "span_start_timestamp_nanos"
+          "refId": "P95",
+          "timeField": ""
         }
       ],
       "title": "Details",
@@ -1211,31 +1500,225 @@
           }
         },
         {
-          "id": "merge",
-          "options": {}
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "span_attributes.http.route": true
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Trend #P95": 0,
+              "span_attributes.http.route": 1
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "quickwit-quickwit-datasource",
+        "uid": "quickwit"
+      },
+      "description": "Details of each API",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Request Rate Trend"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "sparkline"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "palette-classic"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Request Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "reqpm"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Trend #PR95"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "ms"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Error Rate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "reqpm"
+              },
+              {
+                "id": "noValue",
+                "value": "0 req/min"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 17,
+        "y": 24
+      },
+      "id": 13,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "frameIndex": 0,
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "10.4.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "span_attributes.http.route",
+              "id": "3",
+              "settings": {
+                "min_doc_count": "0",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            },
+            {
+              "field": "span_start_timestamp_nanos",
+              "id": "2",
+              "settings": {
+                "interval": "1m"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "quickwit-quickwit-datasource",
+            "uid": "quickwit"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "service_name:$app AND span_kind:2 AND span_attributes.http.status_code:500",
+          "refId": "Error Rate",
+          "timeField": ""
+        }
+      ],
+      "title": "Details",
+      "transformations": [
+        {
+          "id": "timeSeriesTable",
+          "options": {
+            "Error Rate": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "Error Rate Trend": {
+              "timeField": "Time"
+            },
+            "PR95": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "PR95 Trend": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "Request Rate": {
+              "stat": "mean",
+              "timeField": "Time"
+            },
+            "Request Rate Trend": {
+              "stat": "lastNotNull",
+              "timeField": "Time"
+            }
+          }
         },
         {
           "id": "organize",
           "options": {
-            "excludeByName": {},
+            "excludeByName": {
+              "span_attributes.http.route": true
+            },
             "includeByName": {},
             "indexByName": {},
-            "renameByName": {
-              "Trend #Error Rate": "Error Rate",
-              "Trend #Error Rate Trend": "Error Rate Trend",
-              "Trend #PR95": "Max latency",
-              "Trend #PR95 Trend": "PR95 Latency",
-              "Trend #Request Rate": "Request Rate",
-              "Trend #Request Rate Trend": "Request Rate Trent",
-              "span_attributes.http.route": "Route"
-            }
+            "renameByName": {}
           }
         }
       ],
       "type": "table"
     }
   ],
-  "refresh": "30s",
+  "refresh": "5s",
   "schemaVersion": 39,
   "tags": [],
   "templating": {
@@ -1246,61 +1729,56 @@
           "text": "fastapi",
           "value": "fastapi"
         },
+        "datasource": {
+          "type": "quickwit-quickwit-datasource",
+          "uid": "quickwit"
+        },
+        "definition": "{\"find\": \"terms\", \"field\": \"service_name\", \"query\": \"*\"}",
         "hide": 0,
         "includeAll": false,
         "label": "Application",
         "multi": false,
         "name": "app",
-        "options": [
-          {
-            "selected": true,
-            "text": "fastapi",
-            "value": "fastapi"
-          }
-        ],
-        "query": "fastapi",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": {
-          "type": "quickwit-quickwit-datasource",
-          "uid": "f31546e7-3b2e-4b17-8c77-cd84f38011c9"
-        },
-        "definition": "{\"find\": \"terms\", \"field\": \"span_attributes.http.route\", \"query\": \"*\"}",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Route",
-        "multi": true,
-        "name": "route",
         "options": [],
-        "query": "{\"find\": \"terms\", \"field\": \"span_attributes.http.route\", \"query\": \"*\"}",
+        "query": "{\"find\": \"terms\", \"field\": \"service_name\", \"query\": \"*\"}",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "datasource": {
+          "type": "quickwit-quickwit-datasource",
+          "uid": "quickwit"
+        },
+        "filters": [
+          {
+            "key": "span_duration_millis",
+            "operator": ">",
+            "value": "1000"
+          },
+          {
+            "key": "span_attributes.http.flavor",
+            "operator": "=",
+            "value": "1.1"
+          }
+        ],
+        "hide": 0,
+        "name": "filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
       }
     ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "OpenTelemetry APM with Quickwit",
-  "uid": "f30c8fd8-7373-4d97-b24a-ed55462dc8a5",
+  "uid": "fdlux8147a58ga",
   "version": 20,
   "weekStart": ""
 }
