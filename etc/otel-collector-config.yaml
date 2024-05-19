@@ -6,18 +6,18 @@ receivers:
 
 exporters:
   otlp:
-    endpoint: tempo:4317
+    endpoint: quickwit:7281
     tls:
       insecure: true
   prometheus:
     endpoint: "0.0.0.0:8889"
 
-connectors:
-  spanmetrics:
-    dimensions:
-      - name: http.method
-      - name: http.status_code
-      - name: http.route
+# connectors:
+#   spanmetrics:
+#     dimensions:
+#       - name: http.method
+#       - name: http.status_code
+#       - name: http.route
 
 processors:
   batch:
@@ -27,7 +27,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [spanmetrics, otlp]
-    metrics/spanmetrics:
-      receivers: [spanmetrics]
-      exporters: [prometheus]
+      exporters: [otlp]
+    # metrics/spanmetrics:
+    #   receivers: [spanmetrics]
+    #   exporters: [prometheus]

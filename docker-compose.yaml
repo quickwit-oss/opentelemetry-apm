@@ -56,13 +56,13 @@ services:
       - "8889:8889" # Prometheus metrics exporter
     restart: on-failure
     depends_on:
-      - tempo
+      - quickwit
 
-  tempo:
-    image: grafana/tempo:2.4.1
-    command: [ "--target=all", "--storage.trace.backend=local", "--storage.trace.local.path=/var/tempo", "--auth.enabled=false" ]
+  quickwit:
+    image: quickwit/quickwit:0.8.1
+    command: ["run"]
     ports:
-      - "14250:14250"
+      - "7380:7280"
 
   prometheus:
     image: prom/prometheus:v2.51.2
@@ -74,9 +74,9 @@ services:
       - --config.file=/workspace/prometheus.yml
 
   grafana:
-    image: grafana/grafana:10.4.2
+    image: grafana/grafana:10.4.3
     ports:
-      - "3000:3000"
+      - "3002:3000"
     volumes:
       - ./etc/grafana/:/etc/grafana/provisioning/datasources
       - ./etc/dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml
@@ -85,3 +85,5 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: "true"
       GF_AUTH_ANONYMOUS_ORG_ROLE: "Admin"
       GF_FEATURE_TOGGLES_ENABLE: "timeSeriesTable"
+      GF_INSTALL_PLUGINS: "https://github.com/quickwit-oss/quickwit-datasource/releases/download/v0.4.6/quickwit-quickwit-datasource-0.4.6.zip;quickwit-quickwit-datasource"
+      GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS: "quickwit-quickwit-datasource"

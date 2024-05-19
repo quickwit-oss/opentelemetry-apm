@@ -26,22 +26,35 @@ datasources:
       httpMethod: POST
     readOnly: false
     editable: true
-  - uid: tempo
+  - uid: quickwit
     orgId: 1
-    name: Tempo
-    type: tempo
-    typeName: Tempo
-    access: proxy
-    url: http://tempo
-    password: ''
-    user: ''
-    database: ''
-    basicAuth: false
-    isDefault: false
-    jsonData:
-      nodeGraph:
-        enabled: true
-      search:
-        hide: false
+    name: Quickwit
+    type: quickwit-quickwit-datasource
     readOnly: false
-    editable: true
+    url: http://quickwit:7280/api/v1
+    jsonData:
+      index: 'otel-traces-v0_7'
+      timeField: span_start_timestamp_nanos
+      logMessageField: service_name,span_name
+      logLevelField: ""
+      dataLinks:
+        - datasourceUid: jaeger
+          field: trace_id
+          url: '$${__value.raw}'
+  - uid: jaeger
+    orgId: 1
+    name: Jaeger
+    type: jaeger
+    readOnly: false
+    url: http://quickwit:7280/api/v1/otel-traces-v0_7/jaeger
+    jsonData:
+      tracesToLogsV2:
+        # Field with an internal link pointing to a logs data source in Grafana.
+        # datasourceUid value must match the uid value of the logs data source.
+        datasourceUid: 'quickwit'
+        spanStartTimeShift: '1h'
+        spanEndTimeShift: '-1h'
+        filterByTraceID: true
+        filterBySpanID: true
+        customQuery: true
+        query: 'method="${__span.tags.method}"'
